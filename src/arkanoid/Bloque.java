@@ -6,61 +6,14 @@ package arkanoid;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.geom.Rectangle2D;
 
 /**
  *
  * @author saust
  */
-public class Bloque {
-
-    public static int getX() {
-        return x;
-    }
-
-    public static void setX(int x) {
-        Bloque.x = x;
-    }
-
-    public static int getY() {
-        return y;
-    }
-
-    public static void setY(int y) {
-        Bloque.y = y;
-    }
-
-    public static int getANCHO() {
-        return ANCHO;
-    }
-
-    public static void setANCHO(int ANCHO) {
-        Bloque.ANCHO = ANCHO;
-    }
-
-    public static int getALTO() {
-        return ALTO;
-    }
-
-    public static void setALTO(int ALTO) {
-        Bloque.ALTO = ALTO;
-    }
-
-    public static String getModo() {
-        return modo;
-    }
-
-    public static void setModo(String modo) {
-        Bloque.modo = modo;
-    }
-
-    public static boolean isAparecer() {
-        return aparecer;
-    }
-
-    public static void setAparecer(boolean aparecer) {
-        Bloque.aparecer = aparecer;
-    }
+public class Bloque {   
 
     public Color getColor() {
         return color;
@@ -79,12 +32,12 @@ public class Bloque {
     }
     
     
-    public static int x,y;
-    public static int ANCHO=10, ALTO=50;
-    public static String modo;
-    public static boolean aparecer;
-    public static Color color;    // Color del bloque
-    public static boolean visible; // Indica si el bloque es visible o destruido
+    public int x,y;
+    public int ANCHO=10, ALTO=50;
+    public String modo;
+    public boolean aparecer;
+    public Color color;    // Color del bloque
+    public boolean visible=true; // Indica si el bloque es visible o destruido
     
     public Bloque(int x, int y, int ancho, int alto, Color color, String juego) {
         this.x = x;
@@ -92,10 +45,9 @@ public class Bloque {
         this.ANCHO = ancho;
         this.ALTO = alto;
         this.color = color;
-        this.visible = true;
     }
 
-    public Rectangle2D getBloque(){            
+    public Rectangle2D getBloque(){      
         return new Rectangle2D.Double(x, y, ANCHO, ALTO);
     }
     
@@ -106,8 +58,7 @@ public class Bloque {
         }
     }
     
-    public void choque(boolean colisionBloque){
-        
+    public void choque(boolean colisionBloque){        
         if(colisionBloque){
             this.destruir();
         }
@@ -122,5 +73,15 @@ public class Bloque {
     public boolean getVisible() {
         return this.visible;
     }   
+    
+    
+    public boolean colisionBloque(boolean colisionBloque){
+        
+        if(colisionBloque){
+            this.setVisible(false);
+            return false;
+        }
+        return true;
+    }
     
 }

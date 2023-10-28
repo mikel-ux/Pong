@@ -35,13 +35,13 @@ public class Pelota {
         return new Rectangle2D.Double(x, y, ANCHO, ALTO);
     }
 
-    public void mover(Rectangle limites, boolean colisionR1, boolean colisionR2, boolean colisionBloque) {
+    public boolean mover(Rectangle limites, boolean colisionR1, boolean colisionR2, boolean colisionBloque) {
         x += dx;
         y += dy;
 
         if (colisionR1) {
             dx = -dx;
-            x = TableroJuego.XposicionRaqueta1 + 15;
+            x = TableroJuego.XposicionRaqueta1 + Raqueta.ANCHO + 2;
             puntaje1++;
         }
         if (colisionR2) {
@@ -50,7 +50,8 @@ public class Pelota {
         }
         if (colisionBloque) {
             dx = -dx;            
-            puntaje1+=1000;
+            puntaje1+=1000;                                    
+            return true;
         }
         
 
@@ -87,7 +88,7 @@ public class Pelota {
 
             dx = -dx;         
         }
-
+        return false;
     }
     
     public int getScore1(){

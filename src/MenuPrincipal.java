@@ -14,13 +14,13 @@ import javax.swing.JPanel;
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
-/**
- *
- * @author saust
+/*
+ *VERSION MODIFICADA --> VERSION NUEVA 
  */
 public class MenuPrincipal extends javax.swing.JFrame {    
 
         
+    
     //posibles juegos:
     public static String arkanoid = "arkanoid";
     public static String pong = "pong";
